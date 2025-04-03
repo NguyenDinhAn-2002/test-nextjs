@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState<{ id: string; email: string }[]>([]);
+  const [results, setResults] = useState<
+    { id: string; email: string; role: string; created_at: Date }[]
+  >([]);
   const [error, setError] = useState("");
 
   const handleSearch = async (event: React.FormEvent) => {
@@ -68,12 +70,21 @@ export default function SearchPage() {
                   className="result-item bg-gray-100 p-4 rounded-md shadow mb-4"
                 >
                   <h2 className="text-lg font-medium text-gray-800">
-                    {result.email}
+                    <span className="font-semibold">Email:</span> {result.email}
                   </h2>
+                  <p className="text-gray-600">
+                    <span className="font-semibold">Role:</span> {result.role}
+                  </p>
+                  <p className="text-gray-500">
+                    <span className="font-semibold">Ngày tạo:</span>{" "}
+                    {new Date(result.created_at).toLocaleString()}
+                  </p>
                 </div>
               ))
             : !error && (
-                <p className="text-center text-gray-500">Chưa tìm thấy người dùng!</p>
+                <p className="text-center text-gray-500">
+                  Chưa tìm thấy người dùng!
+                </p>
               )}
         </div>
       </div>
