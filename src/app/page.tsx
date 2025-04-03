@@ -16,6 +16,9 @@ export default function Home() {
         <div className={styles.ctas}>
           <span>Nguyễn Đình An xin chào NextJS</span>
           </div>
+          <a href="/search" className="secondary">Trang tìm kiếm</a>
+          <a href="/login" className="primary">Trang đăng nhập</a>
+          <a href="/register" className="secondary">Trang đăng ký</a>
       </main>
     </div>
   );

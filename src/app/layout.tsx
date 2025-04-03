@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ClientWrapper } from "@/app/components/ClientWraper"; // Import component client-side
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      {/* Dùng ClientWrapper để đặt class động */}
+      <ClientWrapper>
+        <div className={`${geistSans.variable} ${geistMono.variable}`}>
+          {children}
+        </div>
+      </ClientWrapper>
     </html>
   );
 }
